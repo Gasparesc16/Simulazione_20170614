@@ -46,6 +46,29 @@ public class ArtsmiaController {
 
 	@FXML
     void handleCreaGrafo(ActionEvent event) {
+		
+		this.txtResult.clear();
+		
+		Integer anno = this.boxAnno.getValue();
+		
+		if(anno == null){
+			
+			this.txtResult.setText("Selezionare anno dal menù a tendina!");
+			return;
+		}
+		
+		model.creaGrafo(anno);
+		
+		txtResult.appendText("Grafo creato!\n");
+		
+		txtResult.appendText("Il grafo é fortemente connesso?\n");
+		
+		txtResult.appendText(model.isStronglyConnected() + "\n");
+	
+		txtResult.appendText("La mostra che ha il maggior numero di opere d'arte é:\n");
+		
+		txtResult.appendText( model.getMaxOpere(anno) + "\n");
+		
     	
     	
 
