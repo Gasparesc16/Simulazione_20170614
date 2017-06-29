@@ -6,6 +6,8 @@ package it.polito.tdp.artsmia;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.artsmia.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -13,6 +15,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class ArtsmiaController {
+	
+	private Model model;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -21,7 +25,7 @@ public class ArtsmiaController {
     private URL location;
 
     @FXML // fx:id="boxAnno"
-    private ChoiceBox<?> boxAnno; // Value injected by FXMLLoader
+    private ChoiceBox<Integer> boxAnno; // Value injected by FXMLLoader
 
     @FXML // fx:id="txtFieldStudenti"
     private TextField txtFieldStudenti; // Value injected by FXMLLoader
@@ -29,8 +33,21 @@ public class ArtsmiaController {
     @FXML // fx:id="txtResult"
     private TextArea txtResult; // Value injected by FXMLLoader
 
-    @FXML
+    /**
+	 * @param model the model to set
+	 */
+	public void setModel(Model model) {
+		this.model = model;
+		
+		this.boxAnno.getItems().addAll(model.getTuttiAnni());
+		
+		
+	}
+
+	@FXML
     void handleCreaGrafo(ActionEvent event) {
+    	
+    	
 
     }
 

@@ -40,4 +40,37 @@ public class ArtsmiaDAO {
 			return null;
 		}
 	}
+
+	public List<Integer> getTuttiAnni() {
+		
+		
+		String sql = 
+					"SELECT begin " +
+					"FROM exhibitions "+
+					"ORDER BY begin";
+
+		List<Integer> result = new ArrayList<>();
+
+		Connection conn = DBConnect.getConnection();
+
+		try {
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			ResultSet res = st.executeQuery();
+
+			while (res.next()) {
+				
+				result.add(res.getInt("begin"));
+			}
+
+			conn.close();
+		
+			return result;
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
